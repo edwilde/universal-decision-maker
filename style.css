@@ -59,7 +59,12 @@ h1 {
   line-height: 1.15;
   text-transform: uppercase;
   color: var(--chalk);
-  text-shadow: 0.09em 0.09em 0 var(--lawn-deep);
+  /* deeper-green sign board lifts chalk letters to AA contrast (3:1+) */
+  display: inline-block;
+  max-width: 100%;
+  background: var(--lawn-deep);
+  padding: 0.3em 0.55em 0.36em;
+  text-shadow: 0.07em 0.07em 0 var(--ink);
   text-wrap: balance;
 }
 
@@ -150,7 +155,7 @@ h1 {
   50% { transform: scaleY(0.82); }
 }
 
-.bug.winner { animation: victory 360ms steps(2, jump-none) infinite; }
+.bug.winner { animation: victory 360ms steps(2, jump-none) 8; }
 
 @keyframes victory {
   50% { transform: translateY(-5px); }
@@ -236,10 +241,6 @@ h1 {
 :focus-visible {
   outline: 3px dashed var(--ink);
   outline-offset: 3px;
-}
-
-.start:focus-visible {
-  outline-color: var(--chalk);
 }
 
 .visually-hidden {
