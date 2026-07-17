@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The Universal Decision Maker</title>
+<meta name="description" content="For when flipping a coin just seems so 20th century — let two bugs race to settle your yes-or-no question.">
+<meta name="theme-color" content="#58b02a">
+<link rel="canonical" href="https://edwilde.github.io/universal-decision-maker/">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://edwilde.github.io/universal-decision-maker/">
+<meta property="og:title" content="The Universal Decision Maker">
+<meta property="og:description" content="For when flipping a coin just seems so 20th century — let two bugs race to settle your yes-or-no question.">
+<meta property="og:image" content="https://edwilde.github.io/universal-decision-maker/og-image.png">
+<meta property="og:image:width" content="2400">
+<meta property="og:image:height" content="1260">
+<meta property="og:image:alt" content="A bright green sports-day racetrack with two pixel-art bugs, gold for Yes and red for No, waiting at the start line beneath the title The Universal Decision Maker.">
+<meta property="og:site_name" content="The Universal Decision Maker">
+
+<!-- Twitter / X -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="The Universal Decision Maker">
+<meta name="twitter:description" content="For when flipping a coin just seems so 20th century — let two bugs race to settle your yes-or-no question.">
+<meta name="twitter:image" content="https://edwilde.github.io/universal-decision-maker/og-image.png">
+<meta name="twitter:image:alt" content="A bright green sports-day racetrack with two pixel-art bugs, gold for Yes and red for No, waiting at the start line beneath the title The Universal Decision Maker.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 13 12' shape-rendering='crispEdges'%3E%3Cpath fill='%23ecc043' d='M3 2H8V3H9V4H10V8H9V9H8V10H3V9H2V8H1V4H2V3H3Z'/%3E%3Cg fill='%23222e1b'%3E%3Crect x='3' y='4' width='1' height='1'/%3E%3Crect x='6' y='3' width='1' height='1'/%3E%3Crect x='5' y='6' width='1' height='1'/%3E%3Crect x='3' y='7' width='1' height='1'/%3E%3Crect x='7' y='7' width='1' height='1'/%3E%3Crect x='10' y='4' width='1' height='4'/%3E%3Crect x='11' y='5' width='1' height='2'/%3E%3Crect x='11' y='4' width='1' height='1'/%3E%3Crect x='12' y='3' width='1' height='1'/%3E%3Crect x='2' y='10' width='1' height='1'/%3E%3Crect x='5' y='10' width='1' height='1'/%3E%3Crect x='8' y='10' width='1' height='1'/%3E%3C/g%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main class="poster">
+
+  <header class="masthead">
+    <h1>The Universal<br>Decision Maker</h1>
+    <p class="tagline">For when flipping a coin just seems so 20th century.
+    Ask your yes-or-no question out loud, then let the bugs settle it.</p>
+  </header>
+
+  <section class="course" aria-label="The racetrack">
+    <p class="visually-hidden">Press “Start the race” and two bugs race along a track.
+    The first one home — yes or no — is your answer.</p>
+    <div class="lane">
+      <span class="lane-label" aria-hidden="true">Yes</span>
+      <div class="track">
+        <span class="finish" aria-hidden="true"></span>
+        <svg class="bug bug-yes" data-runner="yes" viewBox="0 0 13 12" shape-rendering="crispEdges" aria-hidden="true">
+          <path class="shell" d="M3 2 H8 V3 H9 V4 H10 V8 H9 V9 H8 V10 H3 V9 H2 V8 H1 V4 H2 V3 H3 Z"/>
+          <g class="ink">
+            <rect x="3" y="4" width="1" height="1"/>
+            <rect x="6" y="3" width="1" height="1"/>
+            <rect x="5" y="6" width="1" height="1"/>
+            <rect x="3" y="7" width="1" height="1"/>
+            <rect x="7" y="7" width="1" height="1"/>
+            <rect x="10" y="4" width="1" height="4"/>
+            <rect x="11" y="5" width="1" height="2"/>
+            <rect x="11" y="4" width="1" height="1"/>
+            <rect x="12" y="3" width="1" height="1"/>
+            <rect x="2" y="10" width="1" height="1"/>
+            <rect x="5" y="10" width="1" height="1"/>
+            <rect x="8" y="10" width="1" height="1"/>
+            <rect x="1" y="11" width="1" height="1"/>
+            <rect x="4" y="11" width="1" height="1"/>
+            <rect x="7" y="11" width="1" height="1"/>
+          </g>
+          <rect class="eye" x="10" y="5" width="1" height="1"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="lane">
+      <span class="lane-label" aria-hidden="true">No</span>
+      <div class="track">
+        <span class="finish" aria-hidden="true"></span>
+        <svg class="bug bug-no" data-runner="no" viewBox="0 0 13 12" shape-rendering="crispEdges" aria-hidden="true">
+          <path class="shell" d="M3 2 H8 V3 H9 V4 H10 V8 H9 V9 H8 V10 H3 V9 H2 V8 H1 V4 H2 V3 H3 Z"/>
+          <g class="ink">
+            <rect x="3" y="4" width="1" height="1"/>
+            <rect x="6" y="3" width="1" height="1"/>
+            <rect x="5" y="6" width="1" height="1"/>
+            <rect x="3" y="7" width="1" height="1"/>
+            <rect x="7" y="7" width="1" height="1"/>
+            <rect x="10" y="4" width="1" height="4"/>
+            <rect x="11" y="5" width="1" height="2"/>
+            <rect x="11" y="4" width="1" height="1"/>
+            <rect x="12" y="3" width="1" height="1"/>
+            <rect x="2" y="10" width="1" height="1"/>
+            <rect x="5" y="10" width="1" height="1"/>
+            <rect x="8" y="10" width="1" height="1"/>
+            <rect x="1" y="11" width="1" height="1"/>
+            <rect x="4" y="11" width="1" height="1"/>
+            <rect x="7" y="11" width="1" height="1"/>
+          </g>
+          <rect class="eye" x="10" y="5" width="1" height="1"/>
+        </svg>
+      </div>
+    </div>
+
+    <div class="verdict-slot" id="verdict" role="status" aria-live="assertive"></div>
+  </section>
+
+  <div class="controls">
+    <button type="button" class="start" id="start">Start the race</button>
+    <button type="button" class="stop" id="stop" hidden>stop the race</button>
+  </div>
+
+  <footer class="colophon">
+    <p>A loving rebuild of the <a href="https://sam-i-am.com/play/5k/decisions/" rel="external">5k-era original</a>.</p>
+  </footer>
+
+</main>
+<script src="script.js"></script>
+</body>
+</html>

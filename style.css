@@ -1,0 +1,270 @@
+/* The Universal Decision Maker — sports-day-on-a-lawn.
+   Tokens per docs/plans/2026-07-17-universal-decision-maker-design.md */
+
+:root {
+  --lawn:      oklch(0.70 0.19 134);
+  --lawn-deep: oklch(0.55 0.15 136);
+  --chalk:     oklch(0.97 0.015 120);
+  --ink:       oklch(0.24 0.03 140);
+  --gold:      oklch(0.80 0.15 85);
+  --plum:      oklch(0.45 0.16 25);
+
+  --bug-w: clamp(32px, 9vw, 46px);
+  --steps: 25;
+
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 32px;
+  --space-xl: 48px;
+
+  --font-display: "Silkscreen", monospace;
+  --font-body: Verdana, Geneva, sans-serif;
+}
+
+* { box-sizing: border-box; margin: 0; }
+
+body {
+  font-family: var(--font-body);
+  color: var(--ink);
+  background-color: var(--lawn);
+  /* mowed-lawn stripes */
+  background-image: repeating-linear-gradient(
+    180deg,
+    transparent 0 88px,
+    color-mix(in oklch, var(--lawn-deep) 14%, transparent) 88px 176px
+  );
+  -webkit-font-smoothing: antialiased;
+}
+
+.poster {
+  max-width: 40rem;
+  min-height: 100svh;
+  margin-inline: auto;
+  padding: clamp(var(--space-md), 4vw, var(--space-xl));
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: clamp(var(--space-lg), 6vh, 64px);
+}
+
+/* ---------- masthead ---------- */
+
+.masthead { text-align: center; }
+
+h1 {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(1.7rem, 6.5vw, 2.9rem);
+  line-height: 1.15;
+  text-transform: uppercase;
+  color: var(--chalk);
+  text-shadow: 0.09em 0.09em 0 var(--lawn-deep);
+  text-wrap: balance;
+}
+
+.tagline {
+  margin-top: var(--space-md);
+  margin-inline: auto;
+  max-width: 38ch;
+  font-size: clamp(0.8rem, 2.6vw, 0.95rem);
+  line-height: 1.65;
+}
+
+/* ---------- the course ---------- */
+
+.course {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(var(--space-md), 4vh, var(--space-lg));
+}
+
+.lane {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+}
+
+.lane-label {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(0.8rem, 2.8vw, 1rem);
+  text-transform: uppercase;
+  color: var(--ink);
+  width: 3.2em;
+  text-align: right;
+  flex: none;
+}
+
+.track {
+  position: relative;
+  flex: 1;
+  height: calc(var(--bug-w) * 12 / 13 + var(--space-sm));
+  /* one chalk dash per step */
+  background-image: linear-gradient(
+    90deg,
+    color-mix(in oklch, var(--chalk) 75%, transparent) 0 45%,
+    transparent 45%
+  );
+  background-size: calc(100% / var(--steps)) 3px;
+  background-repeat: repeat-x;
+  background-position: 0 100%;
+}
+
+.finish {
+  position: absolute;
+  top: -3px;
+  bottom: -3px;
+  right: calc(var(--bug-w) * 0.35);
+  width: 7px;
+  background: repeating-linear-gradient(
+    180deg,
+    var(--ink) 0 7px,
+    var(--chalk) 7px 14px
+  );
+}
+
+/* ---------- the bugs ---------- */
+
+.bug {
+  position: absolute;
+  bottom: 2px;
+  width: var(--bug-w);
+  height: auto;
+  left: calc((100% - var(--bug-w)) * var(--step, 0) / var(--steps));
+  transform-origin: 50% 100%;
+  /* 1px pixel outline so the shells sit off the lawn */
+  filter: drop-shadow(1px 0 0 var(--ink)) drop-shadow(-1px 0 0 var(--ink))
+          drop-shadow(0 1px 0 var(--ink)) drop-shadow(0 -1px 0 var(--ink));
+}
+
+.bug .ink { fill: var(--ink); }
+.bug .eye { fill: var(--chalk); }
+.bug-yes .shell { fill: var(--gold); }
+.bug-no  .shell { fill: var(--plum); }
+
+.bug.hop { animation: squash 120ms steps(2, jump-none); }
+
+@keyframes squash {
+  50% { transform: scaleY(0.82); }
+}
+
+.bug.winner { animation: victory 360ms steps(2, jump-none) infinite; }
+
+@keyframes victory {
+  50% { transform: translateY(-5px); }
+}
+
+/* ---------- the verdict ---------- */
+
+.verdict-slot {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.stamp {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(3rem, 16vw, 5.5rem);
+  line-height: 1;
+  text-transform: uppercase;
+  color: var(--chalk);
+  border: 0.1em solid var(--chalk);
+  padding: 0.05em 0.3em 0.12em;
+  rotate: -5deg;
+  background: color-mix(in oklch, var(--lawn-deep) 55%, transparent);
+  animation: thump 250ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes thump {
+  from { scale: 1.6; opacity: 0; }
+  to   { scale: 1;   opacity: 1; }
+}
+
+.never-know {
+  font-style: italic;
+  font-size: clamp(0.8rem, 2.8vw, 0.95rem);
+  color: var(--ink);
+  background: var(--chalk);
+  padding: 0.5em 1em;
+  rotate: -2deg;
+}
+
+/* ---------- controls ---------- */
+
+.controls {
+  min-height: 72px;
+  display: grid;
+  place-items: center;
+}
+
+.start {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(0.95rem, 3.2vw, 1.15rem);
+  text-transform: uppercase;
+  color: var(--chalk);
+  background: var(--ink);
+  border: none;
+  padding: 0.9em 1.5em;
+  cursor: pointer;
+  box-shadow: 5px 5px 0 var(--lawn-deep);
+  transition: translate 80ms ease-out, box-shadow 80ms ease-out;
+}
+
+.start:hover { translate: -2px -2px; box-shadow: 7px 7px 0 var(--lawn-deep); }
+.start:active { translate: 3px 3px; box-shadow: 2px 2px 0 var(--lawn-deep); }
+
+.stop {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  color: var(--ink);
+  background: none;
+  border: none;
+  padding: var(--space-md);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.stop:hover { text-decoration-thickness: 2px; }
+
+:focus-visible {
+  outline: 3px dashed var(--ink);
+  outline-offset: 3px;
+}
+
+.start:focus-visible {
+  outline-color: var(--chalk);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ---------- colophon ---------- */
+
+.colophon {
+  text-align: center;
+  font-size: 0.75rem;
+  color: color-mix(in oklch, var(--ink) 90%, var(--lawn));
+}
+
+.colophon a { color: inherit; }
+
+/* ---------- reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .bug.hop, .bug.winner { animation: none; }
+  .stamp { animation: none; }
+  .start { transition: none; }
+}
