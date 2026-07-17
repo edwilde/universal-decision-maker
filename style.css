@@ -120,6 +120,8 @@ h1 {
 .track {
   position: relative;
   flex: 1;
+  /* container so the bug's `translate` can read the track width via 100cqw */
+  container-type: inline-size;
   height: calc(var(--bug-w) * 12 / 13 + var(--space-sm));
   /* one chalk dash per step */
   background-image: linear-gradient(
@@ -152,8 +154,16 @@ h1 {
   bottom: 2px;
   width: var(--bug-w);
   height: auto;
-  left: calc((100% - var(--bug-w)) * var(--step, 0) / var(--steps));
+  left: 0;
+  /* Step along with a compositor transform, not `left`. Moving via a layout
+     property made iOS Safari paint the drop-shadow outline into the shared
+     background and skip repainting the old top row as the bug advanced, leaving
+     a 1px ghost line behind it. `translate` moves the bug's own layer (outline
+     and all), so nothing is left behind. 100cqw is the track's width, keeping
+     the travel track-relative like the old `left` calc did. */
+  translate: calc((100cqw - var(--bug-w)) * var(--step, 0) / var(--steps)) 0;
   transform-origin: 50% 100%;
+  will-change: transform;
   /* 1px pixel outline so the shells sit off the lawn */
   filter: drop-shadow(1px 0 0 var(--ink)) drop-shadow(-1px 0 0 var(--ink))
           drop-shadow(0 1px 0 var(--ink)) drop-shadow(0 -1px 0 var(--ink));
@@ -167,7 +177,7 @@ h1 {
 .bug.hop { animation: squash 120ms steps(2, jump-none); }
 
 @keyframes squash {
-  50% { transform: scaleY(0.82); }
+  50% { scale: 1 0.82; }
 }
 
 .bug.winner { animation: victory 360ms steps(2, jump-none) 8; }
